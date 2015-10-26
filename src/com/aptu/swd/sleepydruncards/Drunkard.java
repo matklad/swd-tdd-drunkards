@@ -8,6 +8,11 @@ public class Drunkard implements Figure {
     }
 
     public boolean isSleeping() {
-        return true;
+        return sleeping;
     }
+
+  @Override
+  public char getAvatar() {
+    return isSleeping() ? '/' : '&';
+  }
 }
