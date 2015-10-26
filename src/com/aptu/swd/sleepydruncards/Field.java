@@ -2,24 +2,24 @@ package com.aptu.swd.sleepydruncards;
 
 
 public class Field {
-    private final IGameObject[][] gameObjects;
+    private final Figure[][] figures;
 
     public Field(int width, int height) {
-        gameObjects = new IGameObject[width][height];
+        figures = new Figure[width][height];
     }
 
-    public void put(IGameObject drunkard, int x, int y) {
+    public void put(Figure drunkard, int x, int y) {
         Point point = findDrunkardPosition(drunkard);
-        if (gameObjects[x][y] != null || point != null) {
+        if (figures[x][y] != null || point != null) {
             throw new IllegalArgumentException();
         }
-        gameObjects[x][y] = drunkard;
+        figures[x][y] = drunkard;
     }
 
-    private Point findDrunkardPosition(IGameObject gameObject) {
-        for (int i = 0; i < gameObjects.length; i++) {
-            for (int j = 0; j < gameObjects[i].length; j++) {
-                if (gameObjects[i][j] == gameObject) {
+    private Point findDrunkardPosition(Figure gameObject) {
+        for (int i = 0; i < figures.length; i++) {
+            for (int j = 0; j < figures[i].length; j++) {
+                if (figures[i][j] == gameObject) {
                     return new Point(i, j);
                 }
             }
@@ -27,22 +27,22 @@ public class Field {
         return null;
     }
 
-    public IGameObject get(int x, int y) {
-        return gameObjects[x][y];
+    public Figure get(int x, int y) {
+        return figures[x][y];
     }
 
-    public void move(IMovable movable, int newX, int newY) {
-        Point p = findDrunkardPosition(movable);
+    public void move(Figure figure, int newX, int newY) {
+        Point p = findDrunkardPosition(figure);
         if (p == null || !isMovePossible(p, new Point(newX, newY))) {
             throw new IllegalArgumentException();
         }
 
-        gameObjects[p.x][p.y] = null;
-        gameObjects[newX][newY] = movable;
+        figures[p.x][p.y] = null;
+        figures[newX][newY] = figure;
     }
 
     private boolean isMovePossible(Point from, Point to) {
-        return (gameObjects[to.x][to.y] == null || gameObjects[to.x][to.y] instanceof Column) &&
+        return (figures[to.x][to.y] == null || figures[to.x][to.y] instanceof Column) &&
         (Math.abs(from.x - to.x) + Math.abs(from.y - to.y) <= 1);
     }
 }

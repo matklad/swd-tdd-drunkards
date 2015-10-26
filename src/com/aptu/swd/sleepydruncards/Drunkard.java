@@ -1,6 +1,6 @@
 package com.aptu.swd.sleepydruncards;
 
-public class Drunkard implements IGameObject, IMovable {
+public class Drunkard implements Figure {
     private boolean sleeping;
 
     public void sleep() {

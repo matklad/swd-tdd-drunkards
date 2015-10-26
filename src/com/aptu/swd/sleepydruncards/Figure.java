@@ -1,4 +1,4 @@
 package com.aptu.swd.sleepydruncards;
 
-public interface IGameObject {
+public interface Figure {
 }

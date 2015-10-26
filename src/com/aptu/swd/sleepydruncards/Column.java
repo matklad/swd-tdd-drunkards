@@ -1,4 +1,4 @@
 package com.aptu.swd.sleepydruncards;
 
-public class Column implements IGameObject {
+public class Column implements Figure {
 }

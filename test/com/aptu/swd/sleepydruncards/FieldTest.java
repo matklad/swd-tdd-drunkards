@@ -19,7 +19,7 @@ public class FieldTest {
     public void testField() throws Exception {
         Drunkard drunkard = new Drunkard();
         field.put(drunkard, 2, 2);
-        IGameObject someone = field.get(2, 2);
+        Figure someone = field.get(2, 2);
         assertTrue(someone == drunkard);
     }
 
