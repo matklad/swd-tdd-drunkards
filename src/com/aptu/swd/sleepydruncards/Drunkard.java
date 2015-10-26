@@ -1,15 +1,15 @@
 package com.aptu.swd.sleepydruncards;
 
 public class Drunkard implements Figure {
-    private boolean sleeping;
+  private boolean sleeping;
 
-    public void sleep() {
-        sleeping = true;
-    }
+  public void sleep() {
+    sleeping = true;
+  }
 
-    public boolean isSleeping() {
-        return sleeping;
-    }
+  public boolean isSleeping() {
+    return sleeping;
+  }
 
   @Override
   public char getAvatar() {
