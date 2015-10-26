@@ -8,18 +8,18 @@ public class Field {
         figures = new Figure[width][height];
     }
 
-    public void put(Figure drunkard, int x, int y) {
-        Point point = findDrunkardPosition(drunkard);
+    public void put(Figure figure, int x, int y) {
+        Point point = findDrunkardPosition(figure);
         if (figures[x][y] != null || point != null) {
             throw new IllegalArgumentException();
         }
-        figures[x][y] = drunkard;
+        figures[x][y] = figure;
     }
 
-    private Point findDrunkardPosition(Figure gameObject) {
+    private Point findDrunkardPosition(Figure figure) {
         for (int i = 0; i < figures.length; i++) {
             for (int j = 0; j < figures[i].length; j++) {
-                if (figures[i][j] == gameObject) {
+                if (figures[i][j] == figure) {
                     return new Point(i, j);
                 }
             }
