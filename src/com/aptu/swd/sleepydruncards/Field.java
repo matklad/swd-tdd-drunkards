@@ -36,18 +36,23 @@ public class Field {
   }
 
   public void move(Figure figure, int newX, int newY) {
-    Point p = findDrunkardPosition(figure);
-    if (p == null || !isMovePossible(p, new Point(newX, newY))) {
+    Point from = findDrunkardPosition(figure);
+    Point to = new Point(newX, newY);
+    if (from == null) {
       throw new IllegalArgumentException();
     }
 
-    figures[p.x][p.y] = null;
-    figures[newX][newY] = figure;
+    figure.move(from, to, this);
   }
 
-  private boolean isMovePossible(Point from, Point to) {
-    return (figures[to.x][to.y] == null || figures[to.x][to.y] instanceof Column) &&
-        (Math.abs(from.x - to.x) + Math.abs(from.y - to.y) <= 1);
+  void moveObject(Point from, Point to) {
+    Figure f = at(from);
+    figures[from.x][from.y] = null;
+    figures[to.x][to.y] = f;
+  }
+
+  Figure at(Point p) {
+    return figures[p.x][p.y];
   }
 
   public void print() {
